@@ -75,16 +75,9 @@ for i in list(range(2))+list(range(2+1, N)):
 plain_text = "helsdklfjhasldkjhasdkljgaslkdgfaldjhadskhflkasdhflakdflaksjdhaklsjfhalkfalskjfakljdfhlo"
 
 count = 10000
-result_list = []
-for i in range(count):
-    pubkey_list, v, x_array = sign(plain_text,
-                                   N, 2, p)
-    temp = verify(
-        plain_text, pubkey_list, v, x_array)
-    assert (temp == v)
-    result_list.append(temp)
 
-result_list.sort()
-
-import collections
-print(len([item for item, count in collections.Counter(result_list).items() if count > 1]))
+pubkey_list, v, x_array = sign(plain_text,
+                               N, 2, p)
+temp = verify(
+    plain_text, pubkey_list, v, x_array)
+assert (temp == v)
